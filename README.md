@@ -51,25 +51,54 @@ Everything should be set up the night before during our install-fest.
 Please ensure you have everything working _before_ you show up for
 ClojureBridge on Saturday.
 
+> #### Using The Terminal ####
+> Some of the software tools we will be using can only be run by typing
+> commands into your computer's terminal program.  In Mac OS this program is
+> called **Terminal**, in Windows you use the **Comand Prompt**, and in Linux
+> there are many terminal programs available.
+>
+> When your terminal program is ready to run a command, it will display a
+> _command prompt_.  This _prompt_ will look a little different on every
+> computer.  On a Linux system or a Mac it may look something like this:
+>
+>     MyComputer:~ me$
+>
+> The prompt on a Windows computer will look like this:
+>
+>     C:\>
+>
+> When we demonstrate terminal commands, we will show a snippet from our
+> terminal.  To represent the command prompt we will just use a dollar sign,
+> `$`; everything _after_ the dollar sign is the command to type.  The
+> result of the command will be shown on the lines following it.  When you
+> run these commands on your own computer, you should expect the results
+> you see to be similar, but not always identical.
+>
+>     $ echo "Hello World"
+>     Hello World
+>
+> The `$` means that we will be using the terminal.  We will type
+> `echo "Hello World"` and press `<Enter>`.  After that we should see
+> `Hello World` on the next line.
+>
+> Sometimes we will provide a sequence of commands in the same snippet — look
+> for the dollar signs!  Other commands may continue running until you
+> interrupt them.  If you need to run a command, but don't yet see the
+> command prompt below the output from last command you ran, you can use
+> the key combination `<Ctrl>-C` (while holding down the `Ctrl` key,
+> press `C`), to interrupt the running program and return your terminal to
+> the command prompt.
+
 First, we're going to verify that everything is set up correctly.
-We'll do this by entering some commands in the terminal.
+We'll do this by entering some commands in your computer's terminal program.
 
-When we demonstrate terminal commands, we'll show a snippet from our
-terminal.  Our prompt is the dollar sign; everything after the dollar
-sign is the command we typed.  The result of the command is printed on
-the following lines.  Sometimes we'll have a sequence of commands in
-the same snippet — look for the dollar signs!  The terminal you're
-using will probably have different prompts but the commands should
-work the same.
-
-
-    $: lein -version
+    $ lein -version
     Leiningen 2.5.1 on Java 1.8.0_40-internal OpenJDK 64-Bit Server VM
 
-    $: git --version
+    $ git --version
     git version 2.1.4
 
-    $: heroku --version
+    $ heroku --version
     heroku-toolbelt/3.25.0 (x86_64-linux-gnu) ruby/2.1.5
     You have no installed plugins.
 
@@ -87,7 +116,7 @@ them.  Clojure is great because:
 * The core language is small and easy to learn.
 * The design makes it easier to write correct programs.
 * Clojure makes it easier to write concurrent programs, programs that
-do more than one thing at a time.
+  do more than one thing at a time.
 * Clojure programs are fast.
 * Clojure programs can build on Java libraries.
 
@@ -117,7 +146,7 @@ request takes to get to GitHub.  (On Windows, the command is called
 
 On my machine, working from home:
 
-        $: traceroute github.com
+        $ traceroute github.com
         traceroute to github.com (192.30.252.130), 30 hops max, 60 byte packets
         1  192.168.1.1 (192.168.1.1)  5.913 ms  5.908 ms  6.000 ms
         2  * 96.120.49.33 (96.120.49.33)  30.033 ms  30.066 ms
@@ -281,7 +310,7 @@ We're going to start by asking Leiningen to stub out a web application for
 us.
 
 ```
-  $ : lein new compojure chatter
+  $ lein new compojure chatter
 ```
 
 
@@ -293,13 +322,13 @@ should result in the creation of a directory `chatter`.
 Move into the project directory:
 
 ```
-  $: cd chatter
+  $ cd chatter
 ```
 
 Start the server with the command:
 
 ```
-  $: lein ring server
+  $ lein ring server
 ```
 
 Lein will download a bunch of stuff off the Internet the first time it
@@ -318,8 +347,8 @@ If you take another look at the terminal, you'll see the message,
 Right-click on the page and ```View Page Source```.  You'll see that's
 not even an HTML document, it's just the String(*) "Hello World".
 
-Let's stop the server by going to the terminal and typing the key
-combination "Control-c".
+Let's stop the server by going back to the terminal and pressing the key
+combination `<Ctrl>-C`.
 
 In Light Table, let's take a closer look at what's in the chatter directory.  It
 looks like:
@@ -340,18 +369,18 @@ looks like:
 6 directories, 4 files
 ```
 
-```project.clj``` is a Clojure file describing what our project does and
+`project.clj` is a Clojure file describing what our project does and
 what other programs it needs to run.
 
-```README.md``` is a Markdown file describing the program's
+`README.md` is a Markdown file describing the program's
 prerequisites, how to run the program, and the license.
 
-```resources``` is a folder where we would store static HTML, CSS, and
+`resources` is a folder where we would store static HTML, CSS, and
 images.
 
-```src``` is where our source code will live.
+`src` is where our source code will live.
 
-```test``` is where our tests will live.  We're going to set an awful
+`test` is where our tests will live.  We're going to set an awful
 example and ignore testing for this tutorial.
 
 ### A closer look at the src directory
@@ -472,8 +501,8 @@ ring, and it combines our routes and the defaults.  When we start the
 server, it's going to look for the routes associated with the `app`
 variable and use those to decide how to handle HTTP requests.
 
-Let's stop the server by going back to the terminal and holding the
-Control and letter c keys down at the same time, "Control-c".
+Let's stop the server by going back to the terminal and pressing
+`<Ctrl>-C`.
 
 ### git
 
@@ -490,7 +519,7 @@ Inside the chatter directory, enter the command, `git init`
 Now git is keeping an eye our directory.  Try asking git the status of
 our directory.
 
-    $: git status
+    $ git status
     On branch master
 
     Initial commit
@@ -520,13 +549,13 @@ Git follows a two-step process.  First you add the changes; they
 become staged.  Then, you commit all of the staged changes.  Let's add
 everything.
 
-    $: git add .
+    $ git add .
 
 The "." tells git the current directory and below.
 
 Now when we ask git for the status:
 
-    $: git status
+    $ git status
     On branch master
 
     Initial commit
@@ -543,7 +572,7 @@ Now when we ask git for the status:
 All of our stuff is ready to be commited.  That requires a commit
 message.
 
-    $: git commit . -m "initial commit"
+    $ git commit . -m "initial commit"
     [master (root-commit) 44a560f] initial commit
     5 files changed, 66 insertions(+)
     create mode 100644 .gitignore
@@ -554,14 +583,14 @@ message.
 
 Now when we ask git for the status:
 
-    $: git status
+    $ git status
     On branch master
     nothing to commit, working directory clean
 
 OK, there haven't been any changes since our last commit, so there's
 nothing to see.  Let's check the log.
 
-    $: git log
+    $ git log
     commit 44a560f1653770afac01aea2c9279a7af46a46eb
     Author: crkoehnen <crkoehnen@gmail.com>
     Date:   Sun Dec 28 16:43:37 2014 -0600
@@ -586,8 +615,9 @@ will open a page for your new repository.  We want to push an existing
 repository, so (be sure to use the url that GitHub gives you instead
 of mine!) :
 
-    $: git remote add origin https://github.com/crkoehnen/chatter.git
-    $: git push -u origin master
+    $ git remote add origin https://github.com/crkoehnen/chatter.git
+
+    $ git push -u origin master
     Username for 'https://github.com': crkoehnen
     Password for 'https://crkoehnen@github.com':
     Counting objects: 13, done.
@@ -630,7 +660,7 @@ Let's start with something small and fix the readme.
 Branching tells git that we want to start working on some changes and
 we're going to give them a name.
 
-    $: git status
+    $ git status
     On branch master
     Your branch is up-to-date with 'origin/master'.
     nothing to commit, working directory clean
@@ -638,11 +668,11 @@ we're going to give them a name.
 To create a branch, use the "git branch" command and give it the name
 for the new branch.
 
-    $: git branch fix-readme
+    $ git branch fix-readme
 
 Without the branch name, `git branch` lists what branches exist.
 
-    $: git branch
+    $ git branch
     fix-readme
     * master
 
@@ -650,16 +680,14 @@ Notice there's now two branches, `master` and `fix-readme`.  Master has
 an asterix by it because we're still on master.  We need to switch to
 `fix-readme`.
 
-    $: git checkout fix-readme
+    $ git checkout fix-readme
     Switched to branch 'fix-readme'
 
-
-    $: git branch
+    $ git branch
     * fix-readme
     master
 
-
-    $: git status
+    $ git status
     On branch fix-readme
     nothing to commit, working directory clean
 
@@ -677,7 +705,7 @@ Open the `README.md` file and replace the two FIXMEs.  Save the file.
 Now, if you ask git for the status, it will show that `README.md` has
 changed.
 
-    $: git status
+    $ git status
     On branch fix-readme
     Changes not staged for commit:
     (use "git add <file>..." to update what will be committed)
@@ -690,7 +718,7 @@ changed.
 We can ask git to show us exactly what changed.
 
 
-    $: git diff
+    $ git diff
     diff --git a/README.md b/README.md
     index 9493433..718893f 100644
     --- a/README.md
@@ -721,7 +749,7 @@ change the description in `project.clj` file.  Make the change and save
 that file too.  Now the git status should be:
 
 
-    $: git status
+    $ git status
     On branch fix-readme
     Changes not staged for commit:
       (use "git add <file>..." to update what will be committed)
@@ -736,10 +764,9 @@ that file too.  Now the git status should be:
 
 Let's add and commit the changes.
 
-    $: git add README.md project.clj
+    $ git add README.md project.clj
 
-
-    $: git status
+    $ git status
     On branch fix-readme
     Changes to be committed:
       (use "git reset HEAD <file>..." to unstage)
@@ -755,13 +782,13 @@ Let's add and commit the changes.
 Now git status reports no uncommitted changes, but we're still on the
 fix-me branch.
 
-    $: git status
+    $ git status
     On branch fix-readme
     nothing to commit, working directory clean
 
 Let's the check the log.
 
-    $: git log
+    $ git log
     commit 57aff889c81698394faf8568b63f14130d32599a
     Author: crkoehnen <crkoehnen@gmail.com>
     Date:   Sun Dec 28 17:33:41 2014 -0600
@@ -782,11 +809,11 @@ new commit.
 Let's merge our changes into the `master` branch.  First, let's checkout
 `master` and check its log.
 
-    $: git checkout master
+    $ git checkout master
     Switched to branch 'master'
     Your branch is up-to-date with 'origin/master'.
 
-    $: git log
+    $ git log
     commit 44a560f1653770afac01aea2c9279a7af46a46eb
     Author: crkoehnen <crkoehnen@gmail.com>
     Date:   Sun Dec 28 16:43:37 2014 -0600
@@ -797,7 +824,7 @@ Note that `master` is lagging behind.  It doesn't have the commit with
 the README changes.  We can fix that by merging our `fix-me` branch into
 the `master` branch.
 
-    $: git merge fix-readme
+    $ git merge fix-readme
     Updating 44a560f..57aff88
     Fast-forward
      README.md   | 4 ++--
@@ -807,7 +834,7 @@ the `master` branch.
 The merge brought in the changes.  If we check the log, we'll see two
 commits now.
 
-    $: git log
+    $ git log
     commit 57aff889c81698394faf8568b63f14130d32599a
     Author: crkoehnen <crkoehnen@gmail.com>
     Date:   Sun Dec 28 17:33:41 2014 -0600
@@ -825,13 +852,13 @@ commits now.
 Now that we've pulled the changes from the fix-readme branch into
 master, we no longer need the `fix-readme` branch, so let's delete it.
 
-    $: git branch -d fix-readme
+    $ git branch -d fix-readme
 
 #### Pushing to GitHub
 
 The final step will be to push our changes to GitHub.
 
-    $: git push origin master
+    $ git push origin master
     Username for 'https://github.com': crkoehnen
     Password for 'https://crkoehnen@github.com':
     Counting objects: 4, done.
@@ -900,7 +927,7 @@ Let's use hiccup to generate the html by changing `app-routes`:
 
 Start the server:
 
-    $: lein ring server
+    $ lein ring server
 
 You'll see that `http://localhost:3000` now proudly displays "Our Chat
 App".  And if you `View Page Source`, you'll see that now it's
@@ -1000,7 +1027,7 @@ should still display "Our Chat App" and the html should be identical.
 Now, let's double check our git status:
 
 
-    $: git status
+    $ git status
     On branch view-messages
     Changes not staged for commit:
        (use "git add <file>..." to update what will be committed)
@@ -1867,7 +1894,7 @@ start it this way, it'll default to port 5000, and you should see that
 in the browser.  Port 3000 won't work anymore, but you'll see the app if
 you switch to 5000.
 
-If we create a jar with `lein uberjar`, we can aso start the app with 
+If we create a jar with `lein uberjar`, we can aso start the app with
 `java $JVM_OPTS -cp target/chatter-standalone.jar clojure.main -m chatter.handler`
 
 These new methods of starting the app are closer to what Heroku will use to start the app.
@@ -1885,7 +1912,7 @@ The final command will open the browser and point it at your app on Heroku.
 
 Try the traceroute command again against the address Heroku assigned your app:
 
-    $: traceroute obscure-brushlands-9918.herokuapp.com
+    $ traceroute obscure-brushlands-9918.herokuapp.com
     traceroute to obscure-brushlands-9918.herokuapp.com (50.16.239.160), 30 hops max, 60 byte packets
     1  192.168.1.1 (192.168.1.1)  15.820 ms  15.797 ms  15.773 ms
     2  96.120.49.33 (96.120.49.33)  23.895 ms  25.196 ms  25.192 ms
